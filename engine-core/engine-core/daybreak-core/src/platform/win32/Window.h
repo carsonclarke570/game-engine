@@ -11,21 +11,16 @@ namespace win32 {
 	class DAYBREAK_API Window : public win32::SubObject, public win32::Caption {
 		public:
 			Window(std::wstring title, HICON icon, WindowType type = RESIZABLE);
-			~Window();
+			virtual ~Window();
 
-			virtual void Initialize() override;
+			virtual void Build() override;
 			virtual LRESULT MessageHandler(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) override;
 
-			void RedrawWindow();
-			void OnNonClientCreate();
-			void OnNonClientActivate(bool active);
-			void OnNonClientPaint(HRGN region);
-			void PaintCaption(HDC hdc);
-			void OnNonClientLeftMouseButtonDown();
-			void OnGetMinMaxInfo(MINMAXINFO* minmax);
-			void OnExitSizeMove();
-			void OnPaint();
+			virtual void Paint(HDC hdc);
 
+			void Show();
+			void Redraw();
+			
 			SIZE Size() { return m_size; }
 			void SetSize(SIZE size) { m_size = size; }
 			void SetSize(int cx, int cy) { m_size.cx = cx; m_size.cy = cy; }
@@ -34,8 +29,19 @@ namespace win32 {
 			void SetActive(bool active) { m_active = active; }
 
 		protected:
-			SIZE m_size;
-			WindowType m_type;
-			bool m_active;
+			SIZE		m_size;
+			WindowType	m_type;
+			bool		m_active;
+
+			void OnNonClientCreate();
+			void OnNonClientActivate(bool active);
+			void OnNonClientPaint(HRGN region);
+			void PaintCaption(HDC hdc);
+			void OnNonClientLeftMouseButtonDown();
+			void OnGetMinMaxInfo(MINMAXINFO* minmax);
+			void OnExitSizeMove();
+			void OnPaint();
+			void OnClose();
+			void OnDestroy();
 	};
 }

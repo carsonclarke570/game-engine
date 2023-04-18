@@ -31,12 +31,17 @@ namespace win32 {
 	}
 
 	LRESULT SubObject::SetupMessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+		Logger::debug(L"Setup with command: %d\n", msg);
 		if (msg == WM_NCCREATE) {
 			const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
 			win32::SubObject* const pWnd = static_cast<win32::SubObject*>(pCreate->lpCreateParams);
+
+			// SetProp(hWnd, TEXT("WindowClass"), (HANDLE) pWnd);
+			//SetProp(hWnd, TEXT("WindowProcess"), (HANDLE) &win32::SubObject::AssignMessageHandler);
 			SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
 			SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&win32::SubObject::AssignMessageHandler));
 			pWnd->SetHandle(hWnd);
+
 			return pWnd->MessageHandler(hWnd, msg, wParam, lParam);
 		}
 		return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -44,6 +49,7 @@ namespace win32 {
 
 	LRESULT SubObject::AssignMessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		win32::SubObject* const pWnd = reinterpret_cast<win32::SubObject*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+		Logger::debug(L"Assigning handler with: %d\n", msg);
 		return pWnd->MessageHandler(hWnd, msg, wParam, lParam);
 	}
 

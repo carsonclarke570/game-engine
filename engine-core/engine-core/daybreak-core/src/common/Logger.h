@@ -11,7 +11,7 @@ class DAYBREAK_API Logger {
 		static std::wstring log_file();
 
 		static void log(const wchar_t* level, const wchar_t* fmt, va_list args);
-
+	
 	public:
 		Logger();
 		~Logger();

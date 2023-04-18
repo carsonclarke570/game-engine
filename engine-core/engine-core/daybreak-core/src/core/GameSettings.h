@@ -14,6 +14,12 @@ class DAYBREAK_API GameSettings {
 		WCHAR m_game_boot_time[MAX_NAME_STRING];
 		HICON m_game_icon;
 		WCHAR m_splashURL[MAX_NAME_STRING];
+
+		std::wstring m_currentPath;
+
+		/* DirectX12 Settings */
+		bool m_useWARP;
+		bool m_useVSync;
 		
 	public:
 		GameSettings();
@@ -32,4 +38,10 @@ class DAYBREAK_API GameSettings {
 
 		static WCHAR* SplashURL() { return inst->m_splashURL; }
 		static void SetSplashURL(int id) { ResourceManager::load_string(id, inst->m_splashURL, MAX_NAME_STRING); }
+
+		static bool UseWARP() { return inst->m_useWARP; }
+		static void SetUseWARP(bool useWARP) { inst->m_useWARP = useWARP; }
+
+		static std::wstring CurrentPath() { return inst->m_currentPath; }
+		static void SetCurrentPath(std::wstring path) { inst->m_currentPath = path; }
 };

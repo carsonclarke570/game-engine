@@ -46,15 +46,6 @@
     <Filter Include="Source\Engine">
       <UniqueIdentifier>{9b0a3f96-81e1-4a23-87e4-4372b7ad2776}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Engine\Public">
-      <UniqueIdentifier>{16d052f2-0f6b-4af8-919b-796daabc110d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Private">
-      <UniqueIdentifier>{01263982-dc10-4d17-8a23-23589e823404}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Classes">
-      <UniqueIdentifier>{7be04641-8407-49f8-8af7-1d1c18f2f3ed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Common">
       <UniqueIdentifier>{7935ff76-9094-4db7-83cb-d9a15a2c3454}</UniqueIdentifier>
     </Filter>
@@ -82,6 +73,78 @@
     <Filter Include="Source\Platform\Win32\Public">
       <UniqueIdentifier>{ed3ded34-cbe1-494e-b500-f993eee4f214}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Platform\DX12">
+      <UniqueIdentifier>{fdce0abf-7f03-44ed-97f9-c1b6839fc932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\DX12\Public">
+      <UniqueIdentifier>{9528c370-89b0-4dd8-9b9a-557bea550d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\DX12\Private">
+      <UniqueIdentifier>{5fe1e923-471f-45b9-b3a3-4f0732fa84b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\DX12\Classes">
+      <UniqueIdentifier>{fb32eb74-1371-4f7d-af2d-979230cc0296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics">
+      <UniqueIdentifier>{be83660c-e8f6-4a36-81df-96ba35870860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Classes">
+      <UniqueIdentifier>{a9134ec0-66e0-4842-b4b2-3a4dbbd1707d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Private">
+      <UniqueIdentifier>{47f01078-df4c-4a23-a7af-4de84928217e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Public">
+      <UniqueIdentifier>{15948723-d0c6-4e11-87cd-89dfe2dff93c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Registry">
+      <UniqueIdentifier>{804d60d9-2c44-4a2c-b742-42f4fa67adc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Registry\Classes">
+      <UniqueIdentifier>{45924dfc-9019-41ea-b422-6d4a8949d8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Registry\Private">
+      <UniqueIdentifier>{4853c939-5509-4710-8f62-c9eb7888dd70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Registry\Public">
+      <UniqueIdentifier>{1d257931-1e70-461f-806b-6bcb298eea82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Manager">
+      <UniqueIdentifier>{3979e5f4-c670-4dca-8c7d-8b15d96bb5d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Window">
+      <UniqueIdentifier>{5cca97ec-d585-4af0-a234-1dfe4da626d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Manager\Classes">
+      <UniqueIdentifier>{3947a42b-adef-4c7d-b332-cf835da2f670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Manager\Private">
+      <UniqueIdentifier>{0df28343-621f-430a-b148-42689811d3c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Manager\Public">
+      <UniqueIdentifier>{4c983aa3-eb25-4c3d-8066-1f7ec65aaff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Window\Classes">
+      <UniqueIdentifier>{e4e5f118-e5e2-451b-9f2a-a9c33b4cfc6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Window\Public">
+      <UniqueIdentifier>{8a84a451-f23b-4f82-9804-2cb4728cf7d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Window\Private">
+      <UniqueIdentifier>{fe063c5c-9090-46de-b10e-15602b5b80ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Engine">
+      <UniqueIdentifier>{3e38c68b-781b-46e8-9053-86ded2ec77ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Engine\Classes">
+      <UniqueIdentifier>{7be04641-8407-49f8-8af7-1d1c18f2f3ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Engine\Private">
+      <UniqueIdentifier>{01263982-dc10-4d17-8a23-23589e823404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Engine\Public">
+      <UniqueIdentifier>{16d052f2-0f6b-4af8-919b-796daabc110d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\daybreak.cpp">
@@ -106,10 +169,10 @@
       <Filter>Source\Core\Private</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\Simulation.cpp">
-      <Filter>Source\Engine\Private</Filter>
+      <Filter>Source\Engine\Engine\Private</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\Engine.cpp">
-      <Filter>Source\Engine\Private</Filter>
+      <Filter>Source\Engine\Engine\Private</Filter>
     </ClCompile>
     <ClCompile Include="src\common\Logger.cpp">
       <Filter>Source\Common\Private</Filter>
@@ -119,9 +182,6 @@
     </ClCompile>
     <ClCompile Include="src\common\CmdLineArgs.cpp">
       <Filter>Source\Common\Private</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\SplashScreen.cpp">
-      <Filter>Source\Engine\Private</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\win32\SubObject.cpp">
       <Filter>Source\Platform\Win32\Private</Filter>
@@ -137,6 +197,93 @@
     </ClCompile>
     <ClCompile Include="src\platform\win32\Win32Caption.cpp">
       <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\Application.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\CommandQueue.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\Context.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\UploadBuffer.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\DescriptorAllocation.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\DescriptorAllocator.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\DescriptorAllocatorPage.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\DynamicDescriptorHeap.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\CommandList.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\RootSignature.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\Resource.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\ResourceStateTracker.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\Texture.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\RenderTarget.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\VertexBuffer.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\Buffer.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Mesh.cpp">
+      <Filter>Source\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\dx12\IndexBuffer.cpp">
+      <Filter>Source\Platform\DX12\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Renderer.cpp">
+      <Filter>Source\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform\win32\ComboBox.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Model.cpp">
+      <Filter>Source\Graphics\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\registry\MeshRegistry.cpp">
+      <Filter>Source\Engine\Registry\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\registry\ModelRegistry.cpp">
+      <Filter>Source\Engine\Registry\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\window\ControlWindow.cpp">
+      <Filter>Source\Engine\Window\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\window\MetricsWindow.cpp">
+      <Filter>Source\Engine\Window\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\window\SplashScreen.cpp">
+      <Filter>Source\Engine\Window\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\manager\FPSCounter.cpp">
+      <Filter>Source\Engine\Manager\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\manager\RenderStateManager.cpp">
+      <Filter>Source\Engine\Manager\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\manager\WindowManager.cpp">
+      <Filter>Source\Engine\Manager\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,10 +309,10 @@
       <Filter>Source\Core\Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\Simulation.h">
-      <Filter>Source\Engine\Classes</Filter>
+      <Filter>Source\Engine\Engine\Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\engine\Engine.h">
-      <Filter>Source\Engine\Classes</Filter>
+      <Filter>Source\Engine\Engine\Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\common\Logger.h">
       <Filter>Source\Common\Classes</Filter>
@@ -175,9 +322,6 @@
     </ClInclude>
     <ClInclude Include="src\common\CmdLineArgs.h">
       <Filter>Source\Common\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\SplashScreen.h">
-      <Filter>Source\Engine\Public</Filter>
     </ClInclude>
     <ClInclude Include="src\platform\win32\SubObject.h">
       <Filter>Source\Platform\Win32\Classes</Filter>
@@ -197,5 +341,101 @@
     <ClInclude Include="src\platform\win32\Win32Caption.h">
       <Filter>Source\Platform\Win32\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="src\platform\dx12\Application.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\CommandQueue.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\Context.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\UploadBuffer.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\DescriptorAllocation.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\DescriptorAllocator.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\DescriptorAllocatorPage.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\DynamicDescriptorHeap.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\CommandList.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\RootSignature.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\Resource.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\ResourceStateTracker.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\Texture.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\TextureType.h">
+      <Filter>Source\Graphics\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\ThreadSafeQueue.h">
+      <Filter>Source\Common\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\RenderTarget.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\VertexBuffer.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\Buffer.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Mesh.h">
+      <Filter>Source\Graphics\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\dx12\IndexBuffer.h">
+      <Filter>Source\Platform\DX12\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderer.h">
+      <Filter>Source\Graphics\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform\win32\ComboBox.h">
+      <Filter>Source\Platform\Win32\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Model.h">
+      <Filter>Source\Graphics\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\registry\MeshRegistry.h">
+      <Filter>Source\Engine\Registry\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\registry\ModelRegistry.h">
+      <Filter>Source\Engine\Registry\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\window\SplashScreen.h">
+      <Filter>Source\Engine\Window\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\window\MetricsWindow.h">
+      <Filter>Source\Engine\Window\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\window\ControlWindow.h">
+      <Filter>Source\Engine\Window\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\manager\FPSCounter.h">
+      <Filter>Source\Engine\Manager\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\manager\RenderStateManager.h">
+      <Filter>Source\Engine\Manager\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\manager\WindowManager.h">
+      <Filter>Source\Engine\Manager\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

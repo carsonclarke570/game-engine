@@ -40,11 +40,13 @@ void Logger::info(const wchar_t* fmt, ...) {
 }
 
 void Logger::debug(const wchar_t* fmt, ...) {
+#ifdef DEBUG
 	va_list args;
 
 	va_start(args, fmt);
 	log(L"DEBG", fmt, args);
 	va_end(args);
+#endif 
 }
 
 void Logger::error(const wchar_t* fmt, ...) {
@@ -82,7 +84,6 @@ void Logger::log_debug_seperator()
 {
 	std::wstring s = L"\n------------------------------------------------------------------------------------\n\n";
 
-#ifdef _DEBUG
 	std::wfstream outfile;
 	outfile.open(std::wstring(log_dir() + L"/" + log_file()), std::ios_base::app);
 
@@ -92,7 +93,6 @@ void Logger::log_debug_seperator()
 	} else {
 		MessageBox(NULL, L"Unable to open log file...", L"Log Error", MB_OK);
 	}
-#endif
 }
 
 bool Logger::is_mtail_running() {

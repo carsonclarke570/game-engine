@@ -8,12 +8,14 @@ bool DX12InputManager::handle_exit() {
 	return current_msg.message == WM_QUIT;
 }
 
-void DX12InputManager::handle_input() {
+bool DX12InputManager::handle_input() {
 	// If there are Window messages then process them.
 	if (PeekMessage(&current_msg, 0, 0, 0, PM_REMOVE)) {
 		TranslateMessage(&current_msg);
 		DispatchMessage(&current_msg);
+		return true;
 	}
+	return false;
 }
 
 InputManager& InputManagerFactory::create() {

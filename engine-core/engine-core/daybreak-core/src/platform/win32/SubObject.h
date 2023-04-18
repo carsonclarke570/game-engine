@@ -6,10 +6,10 @@ namespace win32 {
 
 		public:
 			SubObject(std::wstring className, std::wstring classTitle, HICON icon);
-			~SubObject();
+			virtual ~SubObject();
 
 			virtual void RegisterNewClass();
-			virtual void Initialize() = 0;
+			virtual void Build() = 0;
 
 			HWND Handle() { return m_handle; }
 			void SetHandle(HWND handle) { m_handle = handle; }

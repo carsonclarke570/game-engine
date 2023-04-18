@@ -1,6 +1,7 @@
 #include "daybreak.h"
 #include "Window.h"
 
+#include "engine/manager/FPSCounter.h"
 
 #define DCX_USESTYLE 0x00010000
 
@@ -10,9 +11,10 @@ namespace win32 {
 		SetSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
-	Window::~Window() {}
+	Window::~Window() {
+	}
 
-	void Window::Initialize() {
+	void Window::Build() {
 		RECT desktop;
 		const HWND desktopHandle = GetDesktopWindow();
 		GetWindowRect(desktopHandle, &desktop);
@@ -24,31 +26,39 @@ namespace win32 {
 
 		m_handle = CreateWindow(m_class.c_str(), m_title.c_str(),
 			m_type, ((desktop.right / 2) - (m_size.cx / 2)), ((desktop.bottom / 2) - (m_size.cy / 2)), m_size.cx, m_size.cy, 0, 0, HInstance(), (void*)this);
-		
-		ShowWindow(m_handle, SW_SHOW);
-		UpdateWindow(m_handle);
+	}
+
+	void Window::Show() {
+		ShowWindow(Handle(), SW_SHOW);
+		UpdateWindow(Handle());
 	}
 
 	LRESULT Window::MessageHandler(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
+		Logger::debug(L"Window handler: %d\n", message);
 		switch (message) {
 			case WM_NCCREATE: { OnNonClientCreate(); }									return true;
 			case WM_NCACTIVATE: { OnNonClientActivate(LOWORD(wParam) != WA_INACTIVE); } return true;
-			case WM_NCPAINT: { OnNonClientPaint((HRGN)wParam); }						return false;
+			case WM_NCPAINT: { OnNonClientPaint((HRGN) wParam); }						return false;
 			case WM_NCLBUTTONDOWN: { OnNonClientLeftMouseButtonDown(); }				break;
 			case WM_NCLBUTTONDBLCLK: { win32::util::MaximizeWindow(Handle()); }			return false;
 
 			case WM_GETMINMAXINFO: { OnGetMinMaxInfo((MINMAXINFO*)lParam);  }			return false;
 			case WM_EXITSIZEMOVE: { OnExitSizeMove(); }									break;
-			case WM_TIMER: { RedrawWindow(); }											break;
+			case WM_TIMER: { Redraw(); }												break;
 
-			case WM_PAINT: { OnPaint(); }											break;
+			case WM_PAINT: { OnPaint(); }												break;
+			case WM_CLOSE: { OnClose(); }												break;
+			case WM_DESTROY: { OnDestroy(); }											break;
 		}
 		return SubObject::MessageHandler(hwnd, message, wParam, lParam);
 	}
 
-	void Window::RedrawWindow() {
+	void Window::Paint(HDC hdc) {}
+
+	void Window::Redraw() {
 		SetWindowPos(Handle(), 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_DRAWFRAME | SWP_FRAMECHANGED);
 		SendMessage(Handle(), WM_PAINT, 0, 0);
+		RedrawWindow(Handle(), nullptr, nullptr, RDW_INVALIDATE);
 	}
 
 	void Window::OnNonClientCreate() {
@@ -155,7 +165,7 @@ namespace win32 {
 			if (button->Rect.left < cursorPos.x && button->Rect.right > cursorPos.x && button->Rect.top < cursorPos.y && button->Rect.bottom > cursorPos.y) {
 				
 				switch (button->Command) {
-					case CB_CLOSE: { SendMessage(Handle(), WM_CLOSE, 0, 0); } break;
+					case CB_CLOSE:	{ SendMessage(Handle(), WM_CLOSE, 0, 0); } break;
 					case CB_MINIMIZE: { ShowWindow(Handle(), SW_MINIMIZE); } break;
 					case CB_MAXIMIZE: { win32::util::MaximizeWindow(Handle()); } break;
 				}
@@ -192,15 +202,25 @@ namespace win32 {
 
 		RECT rc;
 		GetClientRect(Handle(), &rc);
+		// Logger::info(L"Window Size: %d %d %d %d\n", rc.left, rc.top, rc.right, rc.bottom);
 
 		// Paint
 		HBRUSH brush = CreateSolidBrush(RGB(36, 36, 36));
 		FillRect(hdc, &rc, brush);
 		DeleteObject(brush);
 
+		Paint(hdc);
 
 		// End Paint
 		EndPaint(Handle(), &ps);
+	}
+
+	void Window::OnClose() {
+		// DestroyWindow(Handle());
+	}
+
+	void Window::OnDestroy() {
+		// PostQuitMessage(0);
 	}
 }
 

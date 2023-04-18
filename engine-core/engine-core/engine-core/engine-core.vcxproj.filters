@@ -43,4 +43,11 @@
       <Filter>Source\Private</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Assets\Shaders\PixelShader.hlsl" />
+    <FxCompile Include="Assets\Shaders\VertexShader.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ class DAYBREAK_API InputManager {
 		/*
 			Performs any logic necessary to consume input.
 		*/
-		virtual void handle_input() = 0;
+		virtual bool handle_input() = 0;
 };
 
 class DAYBREAK_API DX12InputManager : public InputManager {
@@ -24,7 +24,7 @@ class DAYBREAK_API DX12InputManager : public InputManager {
 		DX12InputManager();
 		
 		bool handle_exit();
-		void handle_input();
+		bool handle_input();
 	
 	private:
 		MSG current_msg;
